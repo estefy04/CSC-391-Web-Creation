@@ -1,0 +1,142 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="framefavicon.ico">
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <title>Haunted Gallery</title>
+</head>
+
+<body>
+  <a-scene shadow="type: pcfsoft">
+    <!-- Added floor texture from ambientCG website -->
+    <a-assets>
+      <img id="floor-texture" src="WoodFloor023_1K-JPG_Color.jpg">
+      <img id="floor-texture" src="WoodFloor023_1K-JPG_NormalGL.jpg">
+    </a-assets>
+
+    <a-plane position="0 0 0" rotation="-90 0 0" width="30" height="30" 
+             color="grey"
+             material="src: #floor-texture; normalMap: #floor-normal; repeat: 4 4" 
+             shadow="receive: true">
+    </a-plane>
+
+    <!-- Floor duplicate for ceiling -->
+
+    <a-assets>
+      <img id="floor-texture" src="WoodFloor023_1K-JPG_Color.jpg">
+      <img id="floor-texture" src="WoodFloor023_1K-JPG_NormalGL.jpg">
+    </a-assets>
+
+    <a-plane position="0 10 0" rotation="90 0 0" width="30" height="30" 
+             color="grey"
+             material="src: #floor-texture; normalMap: #floor-normal; repeat: 4 4" 
+             shadow="receive: true">
+    </a-plane>
+
+
+
+    <!-- Gallery Walls -->
+  <a-assets>
+      <img id="walls-texture" src="PaintedPlaster012_1K-JPG/PaintedPlaster012_1K-JPG_Color.jpg">
+      <img id="walls-texture" src="PaintedPlaster012_1K-JPG/PaintedPlaster012_1K-JPG_NormalGL.jpg">
+    </a-assets>
+<a-plane position="0 5 -15" width="30" height="10" 
+         material="src: #walls-texture; normalMap: #walls-normal; repeat: 4 2" 
+         shadow="receive: true">
+</a-plane>
+
+<a-plane position="0 5 15" rotation="0 180 0" width="30" height="10" 
+         material="src: #walls-texture; normalMap: #walls-normal; repeat: 4 2" 
+         shadow="receive: true">
+</a-plane>
+
+<a-plane position="-15 5 0" rotation="0 90 0" width="30" height="10" 
+         material="src: #walls-texture; normalMap: #walls-normal; repeat: 4 2" 
+         shadow="receive: true">
+</a-plane>
+
+<a-plane position="15 5 0" rotation="0 -90 0" width="30" height="10" 
+         material="src: #walls-texture; normalMap: #walls-normal; repeat: 4 2" 
+         shadow="receive: true">
+</a-plane>
+
+<!-- Player Controller with flashlight -->
+
+<a-entity position="0 0 0" movement-controls="speed: 0.1"> 
+      
+      <a-entity camera look-controls wasd-controls="acceleration: 10" position="0 1.6 0">
+        
+        <a-entity light="type: spot; angle: 30; penumbra: 0.5; distance: 15; intensity: 0.8; castShadow: true" 
+                  position="0 0 0">
+        </a-entity>
+      </a-entity>
+      
+    </a-entity>
+
+  <!-- Haunted elements -->
+
+  <a-assets>
+  <img id="floor-texture" src="WoodFloor023_1K-JPG_Color.jpg">
+  <img id="floor-normal" src="WoodFloor023_1K-JPG_NormalGL.jpg">
+
+  <img id="portrait-1" src="scaryportrait-1.jpg">
+  <img id="portrait-2" src="scaryportrait-2.jpg">
+  <img id="portrait-3" src="scaryportrait-3.jpg">
+  <img id="portrait-4" src="scaryportrait-4.jpg">
+</a-assets>
+
+<a-entity position="0 2.5 -5" animation="property: rotation; to: 0 360 0; dur: 5000; loop: true; easing: linear">
+  <a-box position="0 1.45 0" width="2.2" height="0.1" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-box position="0 -1.45 0" width="2.2" height="0.1" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-box position="-1.05 0 0" width="0.1" height="3" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-box position="1.05 0 0" width="0.1" height="3" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  
+  <a-plane position="0 0 -0.05" width="2" height="2.8" 
+           material="src: #portrait-1; side: double" 
+           shadow="receive: true">
+  </a-plane>
+
+</a-entity>
+
+<a-entity position="0 2.5 5" rotation="0 180 0" animation="property: rotation; to: 0 540 0; dur: 5000; loop: true; easing: linear">
+  <a-box position="0 1.45 0" width="2.2" height="0.1" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-box position="0 -1.45 0" width="2.2" height="0.1" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-box position="-1.05 0 0" width="0.1" height="3" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-box position="1.05 0 0" width="0.1" height="3" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-plane position="0 0 -0.05" width="2" height="2.8" material="src: #haunted-portrait; side: double" shadow="receive: true"></a-plane>
+
+  <a-plane position="0 0 -0.05" width="2" height="2.8" 
+           material="src: #portrait-2; side: double" 
+           shadow="receive: true">
+  </a-plane>
+</a-entity>
+
+<a-entity position="-5 2.5 0" rotation="0 90 0" animation="property: rotation; to: 0 450 0; dur: 5000; loop: true; easing: linear">
+  <a-box position="0 1.45 0" width="2.2" height="0.1" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-box position="0 -1.45 0" width="2.2" height="0.1" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-box position="-1.05 0 0" width="0.1" height="3" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-box position="1.05 0 0" width="0.1" height="3" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-plane position="0 0 -0.05" width="2" height="2.8" material="src: #haunted-portrait; side: double" shadow="receive: true"></a-plane>
+  
+  <a-plane position="0 0 -0.05" width="2" height="2.8" 
+           material="src: #portrait-3; side: double" 
+           shadow="receive: true">
+  </a-plane>
+</a-entity>
+
+<a-entity position="5 2.5 0" rotation="0 -90 0" animation="property: rotation; to: 0 270 0; dur: 5000; loop: true; easing: linear">
+  <a-box position="0 1.45 0" width="2.2" height="0.1" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-box position="0 -1.45 0" width="2.2" height="0.1" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-box position="-1.05 0 0" width="0.1" height="3" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-box position="1.05 0 0" width="0.1" height="3" depth="0.2" color="#3d2b1f" shadow="cast: true"></a-box>
+  <a-plane position="0 0 -0.05" width="2" height="2.8" material="src: #haunted-portrait; side: double" shadow="receive: true"></a-plane>
+
+  <a-plane position="0 0 -0.05" width="2" height="2.8" 
+           material="src: #portrait-4; side: double" 
+           shadow="receive: true">
+  </a-plane>
+</a-entity>
+
+  </a-scene>
+</body>
+</html>
